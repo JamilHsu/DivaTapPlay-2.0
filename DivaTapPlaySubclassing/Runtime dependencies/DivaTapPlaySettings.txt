@@ -17,8 +17,8 @@ O (VK code:79),		    ⇀]
 0.0002	momentum reduce_ratio
 5.0	slide_require in slider only area
 0.0002	momentum reduce_ratio in slider only area
-0	running_on_real_Windows (recommended to enable on Windows)(Uses precise touch coordinates.  Will crash on Linux. If the touch coordinates are incorrect, try disabling this option.)
-0	enable_mouse_in_pointer
+0	running_on_real_Windows (Recommended to enable on Windows)(Uses precise touch coordinates.  Will crash on Linux.)
+0	enable_mouse_in_pointer (Treat the mouse as a touch operation.)
 
 
 
@@ -43,6 +43,6 @@ It's important to note that the sliding determination is based on a momentum sys
 
 Therefore, `slide_require` is approximately a quadratic relationship. That is, setting `slide_require` to 2 times will actually increase the minimum required displacement by about 4 times. Since the higher the momentum, the slower the momentum accumulation, this also affects the speed required for sliding.
 
-`momentum reduce_ratio` is the amount of momentum that decreases every 1µs(0.0000001 second). This affects how long after stopping the movement will the slide key be released. This also affects the minimum speed required to trigger a slide.
+`momentum reduce_ratio` is the amount of momentum that decreases every 1µs(0.000001 second). This affects how long after stopping the movement will the slide key be released. This also affects the minimum speed required to trigger a slide.
 
 

@@ -12,7 +12,8 @@ Please check `DivaTapPlaySettings.txt` to see which settings can be adjusted.
 
 Since I cannot detect when the game is currently in rhythm gameplay, my current design automatically switches between enabled and disabled states by detecting whether the mouse cursor has been hidden. Of course, this detection method is not accurate, so you may need to manually toggle the enabled/disabled state.
 
-The toggle method is to swipe one finger from the top to the bottom. If it is disabled via the gesture, it will not automatically re-enable again (or in other words, it will only automatically re-enable if it was automatically disabled).
+The toggle method is to swipe one finger from the top to the bottom.  
+If it is disabled via the gesture, it will not automatically re-enable again (or in other words, it will only automatically re-enable if it was automatically disabled).
 
 你也許會對此Mod也感興趣: [Mix Mode/Tap Play In-Game UI for Mega Mix+](https://gamebanana.com/mods/383642)  
 You might also be interested in this mod: [Mix Mode/Tap Play In-Game UI for Mega Mix+](https://gamebanana.com/mods/383642)
