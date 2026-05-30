@@ -1,0 +1,7 @@
+enabled = true
+name = "Tap Play 2.0"
+description = "Intercept and analyze touch input, then convert them into corresponding keyboard inputs."
+version = "1.0"
+date = "30.05.2026"
+author = "Jamil_Hsu"
+dll = ["DivaTapPlaySubclassing.dll"]

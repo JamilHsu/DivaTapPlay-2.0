@@ -1,0 +1,48 @@
+73 (I),		△		Each line corresponds to a setting. Only the first word is interpreted as a setting (separated by spaces), therefore the rest are comments.
+74 (J),		□		The first 12 settings are for key configuration. Please use decimal Virtual-Key Codes. You can refer to https://learn.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes
+75 (K),		×
+76 (L),		◯		If it's a letter key, you can also use a single uppercase letter instead of Virtual-Key Codes, like WASD above.
+W (VK code:87),	🡅
+A (VK code:65),	🡄
+S (VK code:83),	🡇
+D (VK code:68),	🡆
+Q (VK code:81),	[↼ 		
+E (VK code:69),	    ⇀]		Slider button settings.
+U (VK code:85),		[↼ 
+O (VK code:79),		    ⇀]		
+1	UI_type //0=No UI; 1=△□×◯; 2=XYBA
+0.39	opacity
+25	slider_height (0~100)
+5.0	slide_require
+0.0002	momentum reduce_ratio
+5.0	slide_require in slider only area
+0.0002	momentum reduce_ratio in slider only area
+0	running_on_real_Windows (recommended to enable on Windows)(Uses precise touch coordinates.  Will crash on Linux. If the touch coordinates are incorrect, try disabling this option.)
+0	enable_mouse_in_pointer
+
+
+
+
+0 = Enabled
+1 = Disabled
+
+Because I'm too lazy to write more complex configuration parsing programs, please be careful not to mess up the formatting.
+
+The logic of the method for detecting sliding:
+# The following pseudocode is for illustrative purposes only and does not represent the actual situation (actual code needs to consider issues such as positive and negative displacement).
+
+Momentum = max(OldMomentum - over_time * momentum reduce_ratio , 0) # It will use the momentum reduce_ratio or the "momentum reduce_ratio in slider only area"
+NewMomentum = √(Momentum^2 + Displacement) # The unit of Displacement is pixels. The value of Displacement depends primarily on the horizontal displacement distance, but the vertical displacement distance is also considered (with less weight).
+if (NewMomentum <= 0):
+    release slider button
+else if (The slider button was not pressed and NewMomentum > slide_require):
+    press slider button
+# It will use the slide_require or the "slide_require in slider only area"
+
+It's important to note that the sliding determination is based on a momentum system. This system adds the displacement distance to the momentum, but in a square root form. Specifically: NewMomentum = √(OldMomentum^2 + Displacement).
+
+Therefore, `slide_require` is approximately a quadratic relationship. That is, setting `slide_require` to 2 times will actually increase the minimum required displacement by about 4 times. Since the higher the momentum, the slower the momentum accumulation, this also affects the speed required for sliding.
+
+`momentum reduce_ratio` is the amount of momentum that decreases every 1µs(0.0000001 second). This affects how long after stopping the movement will the slide key be released. This also affects the minimum speed required to trigger a slide.
+
+
