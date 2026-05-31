@@ -848,7 +848,9 @@ extern "C" {
         if (errmsg) {
             MessageBoxW(NULL, errmsg, L"TapPlay 2.0", MB_OK | MB_ICONERROR);
         }
-        freopen("CONOUT$", "w", stdout);
+        if (GetConsoleWindow() != NULL) {
+            freopen("CONOUT$", "w", stdout);
+        }
         printf("[TapPlay 2.0] Settings:\n"
             "Buttons:\n"
             "%d %d %d %d\n"
